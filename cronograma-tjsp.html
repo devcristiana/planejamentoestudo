@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rumo ao TJSP · Oficial de Justiça</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#171230;--sf:#221b45;--sf2:#2c2455;--ln:#3a3068;--tx:#f1eefc;--mu:#a49ccb;--gold:#f4b942;--ok:#5eead4;--r:18px}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--tx);font:16px/1.55 Figtree,system-ui,sans-serif;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+h1,h2,h3,.big{font-family:"Bricolage Grotesque",Georgia,serif}
+.wrap{max-width:900px;margin:0 auto;padding:20px 16px 60px}
+.hero{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;background:linear-gradient(135deg,#2c2455,#221b45 60%);border:1px solid var(--ln);border-radius:28px;padding:28px}
+.hero h1{font-size:clamp(1.7rem,5vw,2.6rem);line-height:1.1;font-weight:800}
+.hero p{color:var(--mu);margin-top:8px}
+.days{text-align:center;background:var(--bg);border:2px solid var(--gold);border-radius:24px;padding:14px 22px}
+.days .big{font-size:3.4rem;font-weight:800;color:var(--gold);line-height:1}
+.days small{color:var(--mu);display:block}
+.days input{background:none;border:0;border-bottom:1px dashed var(--mu);color:var(--tx);font:inherit;font-size:.8rem;margin-top:6px;text-align:center;width:130px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.stat{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);padding:14px 16px}
+.stat b{font-family:"Bricolage Grotesque",serif;font-size:1.7rem;display:block}
+.stat span{color:var(--mu);font-size:.85rem}
+.bar{height:10px;background:var(--bg);border-radius:9px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--ok));border-radius:9px;transition:width .4s}
+.now{background:var(--sf2);border-left:5px solid var(--gold);border-radius:var(--r);padding:16px 18px;margin-bottom:18px}
+.now h2{font-size:1.15rem}.now p{color:var(--mu);font-size:.95rem}
+.tabs{display:flex;gap:8px;margin:22px 0 14px}
+.tabs button{flex:1;background:var(--sf);color:var(--mu);border:1px solid var(--ln);border-radius:14px;padding:12px;font:600 1rem Figtree,sans-serif;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--gold);color:#2a1d00;border-color:var(--gold)}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--ok);outline-offset:2px}
+.phase{margin:26px 0 10px}.phase h2{font-size:1.3rem}.phase p{color:var(--mu);font-size:.92rem}
+.wk{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);padding:14px 16px;margin-bottom:10px}
+.wk.cur{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.wk.done{opacity:.55}
+.wk h3{font-size:1rem}.wk .dt{color:var(--mu);font-size:.85rem}
+.wk ul{grid-column:2;padding-left:18px;color:var(--mu);font-size:.93rem}
+.chips{grid-column:2;display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.78rem;padding:2px 10px;border-radius:20px;border:1px solid currentColor}
+input[type=checkbox]{appearance:none;width:26px;height:26px;border:2px solid var(--mu);border-radius:8px;cursor:pointer;display:grid;place-content:center;flex:none;background:transparent}
+input[type=checkbox]:checked{background:var(--ok);border-color:var(--ok)}
+input[type=checkbox]:checked::after{content:"✓";color:#06332d;font-weight:800;font-size:16px}
+details{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+summary{cursor:pointer;padding:14px 16px;list-style:none;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary h3{font-size:1.1rem}summary .pc{font-weight:700}
+summary .bar{grid-column:1/-1;margin-top:2px}
+.tp{display:flex;gap:12px;align-items:flex-start;padding:10px 16px;border-top:1px solid var(--ln);cursor:pointer}
+.tp.on span{text-decoration:line-through;color:var(--mu)}
+.hide{display:none}
+footer{color:var(--mu);font-size:.85rem;text-align:center;margin-top:30px}
+@media(max-width:620px){.hero{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stats .stat:first-child{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div>
+    <h1>Rumo ao TJSP</h1>
+    <p>Oficial de Justiça · 70 questões · meta de 55 a 60 acertos. Três horas por dia, um tema de cada vez.</p>
+    <p id="quote" style="color:var(--gold);font-weight:500"></p>
+  </div>
+  <div class="days"><div class="big" id="dias">0</div><small>dias para a prova</small>
+    <input type="date" id="exam" aria-label="Data da prova"></div>
+</header>
+
+<section class="stats">
+  <div class="stat"><b id="pAll">0%</b><span>do conteúdo estudado</span><div class="bar"><i id="bAll"></i></div></div>
+  <div class="stat"><b id="nTop">0/0</b><span>tópicos concluídos</span></div>
+  <div class="stat"><b id="nWk">0/0</b><span>semanas concluídas</span></div>
+</section>
+
+<section class="now" id="now"></section>
+
+<div class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-t="plano">Cronograma</button>
+  <button role="tab" aria-selected="false" data-t="mat">Matérias</button>
+</div>
+<div id="plano"></div>
+<div id="mat" class="hide"></div>
+<footer>Seu progresso fica salvo neste navegador. Tópicos e artigos exatamente como no edital.</footer>
+</div>
+
+<script>
+const S=[
+{id:"port",n:"Língua Portuguesa",q:15,c:"#7dd3fc",t:["Interpretação de textos verbais e não verbais","Informações literais, inferências e ponto de vista do autor","Estrutura do texto, coesão e relações entre ideias","Sentido contextual, sinônimos, antônimos e sentido figurado","Classes de palavras","Concordância verbal e nominal","Regência verbal e nominal","Colocação pronominal","Crase","Pontuação"]},
+{id:"pen",n:"Direito Penal",q:0,c:"#fb7185",t:["Arts. 1º a 12", "Arts. 100 a 106", "Arts. 107 a 121", "Arts. 129, 150 e 154", "Arts. 293 a 305", "Arts. 307, 308 e 311-A", "Arts. 312 a 317", "Arts. 319 a 333", "Arts. 336 e 337", "Arts. 339 a 347", "Arts. 357 e 359"]},
+{id:"ppe",n:"Direito Processual Penal",q:0,c:"#f472b6",t:["Arts. 24 a 42", "Arts. 61 a 74", "Art. 112", "Arts. 125 a 131", "Arts. 156 e 185", "Arts. 202 a 204", "Arts. 218 a 225", "Arts. 240 a 250", "Art. 274", "Arts. 283 a 303", "Arts. 351 a 363", "Arts. 370 a 372", "Arts. 396 a 396-A e 406", "Arts. 436 a 446", "Arts. 485 a 487", "Arts. 513 a 518", "Arts. 563 a 570", "Art. 593", "Arts. 647 a 654", "Arts. 762 e 763", "Arts. 792, 798 e 798-A", "Lei 9.099/95: arts. 1º, 2º, 60 a 62 e 66 a 68"]},
+{id:"pci",n:"Direito Processual Civil",q:0,c:"#fbbf24",t:["Arts. 1º a 11 e 13 a 18", "Arts. 21 a 27 e 36", "Arts. 42 a 53", "Arts. 64 a 66", "Arts. 70 a 85", "Arts. 98 a 102 e 110 a 111", "Arts. 125 a 135", "Arts. 139 a 143", "Arts. 149 a 155", "Arts. 159 a 161", "Arts. 176 a 199", "Arts. 203 a 259", "Arts. 269 a 275", "Arts. 447 a 449 e 453 a 454", "Arts. 502, 528, 535, 536, 538 e 554", "Arts. 560 a 563, 626, 695 e 751", "Arts. 782, 795, 806 e 807", "Arts. 827 a 846", "Arts. 870 a 875", "Arts. 994, 1.001, 1.003, 1.009, 1.010, 1.015 e 1.022", "Lei 9.099/95: arts. 8º, 9º, 18 e 19"]},
+{id:"con",n:"Direito Constitucional",q:0,c:"#a78bfa",t:["Arts. 1º a 16", "Art. 18", "Arts. 37 a 41", "Arts. 92 a 99", "Arts. 125, 127 e 134"]},
+{id:"adm",n:"Direito Administrativo",q:0,c:"#34d399",t:["Lei 10.261/68: arts. 1º, 3º, 4º, 11, 13 e 14", "Lei 10.261/68: arts. 46, 47, 57 e 78", "Lei 10.261/68: arts. 110, 120, 127 e 176", "Lei 10.261/68: arts. 241 a 243 e 251", "Lei 8.429/92: arts. 9º e 13"]},
+{id:"civ",n:"Direito Civil",q:0,c:"#fb923c",t:["Arts. 1º a 25", "Arts. 40 a 45, 49, 50, 53 e 62", "Arts. 70 a 103", "Arts. 115 a 120", "Arts. 138 a 159", "Arts. 166 a 201", "Arts. 212 a 215", "Arts. 653 a 666", "Arts. 1.169 a 1.173", "Arts. 1.196 a 1.203", "Arts. 1.431, 1.432, 1.442, 1.444 a 1.447, 1.451, 1.461 e 1.467 a 1.472", "Arts. 1.728, 1.767, 1.775 a 1.778 e 1.997", "Decreto-Lei 4.657/42 (LINDB)"]},
+{id:"esp",n:"Legislação Especial",q:0,c:"#2dd4bf",t:["Lei 6.830/80: arts. 1º, 2º, 7º, 8º, 11 e 37", "Resolução CNJ 354/2020: arts. 1º e 8º a 10", "Lei 11.608/2003", "Corregedoria, Tomo I, cap. I: arts. 1º a 4º", "Corregedoria, Tomo I, cap. III, seção III: art. 33", "Corregedoria, Tomo I, cap. III, seção V: arts. 47 e 49", "Corregedoria, Tomo I, cap. III, seção XI: arts. 105 a 110", "Corregedoria, Tomo I, cap. IV, seção III: art. 196, inciso XX", "Corregedoria, Tomo I, cap. IV, seção IV: art. 282, § 1º", "Corregedoria, Tomo I, cap. IV, seção VI: arts. 310 e 315", "Corregedoria, Tomo I, cap. IV, seção XII: art. 410", "Corregedoria, Tomo I, cap. IV, seção XIII: arts. 436 e 436-A", "Corregedoria, Tomo I, cap. IV, seção XIV: arts. 439, 440 e 440-A", "Corregedoria, Tomo I, cap. VII: arts. 994 a 1.091-A", "Corregedoria, Tomo I, cap. X, seção III: arts. 1.137 a 1.139", "Corregedoria, Tomo I, cap. XI, seção VII: arts. 1.245 e 1.247"]},
+{id:"mat",n:"Matemática e Raciocínio Lógico",q:7,c:"#60a5fa",t:["Operações com reais, MMC e MDC","Razão, proporção e porcentagem","Regra de três simples e composta","Médias simples e ponderada","Juros simples","Equações de 1º e 2º graus e sistemas","Tabelas, gráficos e sistemas de medidas","Geometria: perímetro, área, volume, ângulos e Pitágoras","Situações-problema","Raciocínio lógico: estruturas, argumentação, diagramas e sequências"]},
+{id:"inf",n:"Informática",q:5,c:"#c084fc",t:["Windows 10+: pastas, arquivos, atalhos e área de transferência","Word","Excel","Teams, OneDrive e Microsoft 365","E-mail e internet"]},
+{id:"atu",n:"Atualidades",q:3,c:"#facc15",t:["Fatos de 2026: política, economia, sociedade e cultura","Lei 13.146/2015 (Estatuto da Pessoa com Deficiência), arts. 1º a 13, 34 a 38 e 79 a 87"]}
+];
+const by=Object.fromEntries(S.map(s=>[s.id,s]));
+const ESP=["pen","ppe","pci","con","adm","civ","esp"];
+const P=[
+{t:"Fase 1 · Fundação",d:"Você nunca estudou Direito: comece pela base e crie o hábito.",w:[
+["Constituição e Português",["con","port"],["Português: interpretação e coesão","CF arts. 1º a 16"]],
+["Constituição e Português",["con","port"],["CF arts. 18 e 37 a 41","Português: classes de palavras e concordância"]],
+["Judiciário e Penal",["con","pen"],["CF arts. 92 a 99, 125, 127 e 134","Código Penal arts. 1º a 12"]],
+["Penal e Português",["pen","port"],["Código Penal arts. 100 a 154","Português: regência, crase e pontuação"]],
+["Penal e Matemática",["pen","mat"],["Código Penal arts. 293 a 333","Matemática: porcentagem e regra de três"]],
+["Fechamento da fase 1",["mat","port","pen"],["Matemática e raciocínio lógico","Primeira bateria de questões de cada matéria"]]]},
+{t:"Fase 2 · Aprofundamento",d:"O coração da prova: 40 questões de conhecimentos específicos.",w:[
+["Processo Civil I",["pci"],["CPC arts. 1º a 111"]],
+["Processo Civil II",["pci"],["CPC arts. 125 a 259: o capítulo do oficial de justiça"]],
+["Processo Civil III",["pci"],["CPC arts. 269 a 563 e recursos"]],
+["Execução e Legislação Especial",["pci","esp"],["CPC arts. 827 a 875","Lei 6.830/80"]],
+["Processo Penal I",["ppe"],["CPP arts. 24 a 131"]],
+["Processo Penal II",["ppe"],["CPP arts. 156 a 303"]],
+["Processo Penal III",["ppe","pci"],["CPP arts. 351 a 798","Lei 9.099/95"]],
+["Direito Civil",["civ"],["Código Civil e LINDB"]]]},
+{t:"Fase 3 · Fechamento",d:"Questões, revisão e as matérias menores que garantem pontos.",w:[
+["Administrativo e Normas",["adm","esp"],["Lei 10.261/68 e Lei 8.429/92","Resolução CNJ 354/2020 e Lei 11.608/2003"]],
+["Corregedoria e Informática",["esp","inf"],["Normas da Corregedoria, Tomo I","Informática"]],
+["Atualidades e lógica",["atu","mat"],["Fatos de 2026 e Lei 13.146/2015","Raciocínio lógico"]],
+["Revisão geral",ESP,["Refazer questões erradas de cada matéria","Releitura dos artigos mais cobrados"]],
+["Simulados e reta final",["port","mat",...ESP],["Simulados completos de 70 questões","Revisão leve e descanso na véspera"]]]}
+];
+const WEEKS=P.flatMap((p,pi)=>p.w.map(w=>({ph:pi,foco:w[0],ids:w[1],txt:w[2]})));
+const START=new Date(2026,10,2);
+const QUOTES=["Um tópico por vez. É assim que 70 questões viram 60 acertos.","Constância vence intensidade: três horas hoje valem mais que dez no domingo.","Cada checkbox marcado é uma questão a mais na sua conta.","Você já começou. A parte mais difícil ficou para trás."];
+const $=s=>document.querySelector(s);
+let st={};try{st=JSON.parse(localStorage.getItem("tjsp")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("tjsp",JSON.stringify(st))}catch(e){}};
+const fmt=d=>d.toLocaleDateString("pt-BR",{day:"2-digit",month:"short"});
+function topicId(s,i){return s.id+i}
+function pct(s){return Math.round(s.t.filter((_,i)=>st[topicId(s,i)]).length/s.t.length*100)}
+function curWeek(){const n=Math.floor((new Date()-START)/6048e5);return Math.min(Math.max(n,0),WEEKS.length-1)}
+function render(){
+  const exam=st.exam||"2027-03-14";$("#exam").value=exam;
+  const dias=Math.max(0,Math.ceil((new Date(exam+"T12:00")-new Date())/864e5));
+  $("#dias").textContent=dias;
+  const total=S.reduce((a,s)=>a+s.t.length,0),done=S.reduce((a,s)=>a+s.t.filter((_,i)=>st[topicId(s,i)]).length,0);
+  const pc=Math.round(done/total*100);
+  $("#pAll").textContent=pc+"%";$("#bAll").style.width=pc+"%";$("#nTop").textContent=done+"/"+total;
+  const wd=WEEKS.filter((_,i)=>st["w"+i]).length;$("#nWk").textContent=wd+"/"+WEEKS.length;
+  $("#quote").textContent=QUOTES[new Date().getDate()%QUOTES.length];
+  const cw=curWeek(),w=WEEKS[cw];
+  $("#now").innerHTML=`<h2>Esta semana: ${w.foco}</h2><p>${w.txt.join(" · ")}</p>`;
+  let h="";
+  P.forEach((p,pi)=>{
+    h+=`<div class="phase"><h2>${p.t}</h2><p>${p.d}</p></div>`;
+    WEEKS.forEach((x,i)=>{if(x.ph!==pi)return;
+      const a=new Date(START.getTime()+i*6048e5),b=new Date(a.getTime()+6*864e5);
+      h+=`<div class="wk ${i===cw?"cur":""} ${st["w"+i]?"done":""}"><input type="checkbox" data-k="w${i}" ${st["w"+i]?"checked":""} aria-label="Semana ${i+1} concluída"><div><h3>Semana ${i+1}: ${x.foco}</h3><div class="dt">${fmt(a)} a ${fmt(b)}</div></div><ul>${x.txt.map(t=>`<li>${t}</li>`).join("")}</ul><div class="chips">${x.ids.map(id=>`<span class="chip" style="color:${by[id].c}">${by[id].n}</span>`).join("")}</div></div>`;
+    });
+  });
+  $("#plano").innerHTML=h;
+  const open=[...document.querySelectorAll("#mat details[open]")].map(d=>d.dataset.id);
+  $("#mat").innerHTML=S.map(s=>{const p=pct(s);
+    return `<details data-id="${s.id}" ${open.includes(s.id)?"open":""}><summary><h3 style="color:${s.c}">${s.n}${s.q?` · ${s.q} questões`:""}</h3><span class="pc">${p}%</span><div class="bar"><i style="width:${p}%;background:${s.c}"></i></div></summary>${s.t.map((t,i)=>`<label class="tp ${st[topicId(s,i)]?"on":""}"><input type="checkbox" data-k="${topicId(s,i)}" ${st[topicId(s,i)]?"checked":""}><span>${t}</span></label>`).join("")}</details>`}).join("")
+    +`<p style="color:var(--mu);font-size:.85rem;margin-top:8px">Específicos somam 40 questões: Penal, Processo Penal, Processo Civil, Constitucional, Administrativo, Civil e Legislação Especial.</p>`;
+}
+document.addEventListener("change",e=>{
+  if(e.target.id==="exam"){st.exam=e.target.value;save();render();return}
+  const k=e.target.dataset.k;if(!k)return;
+  st[k]=e.target.checked;save();render();
+});
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  $("#plano").classList.toggle("hide",b.dataset.t!=="plano");$("#mat").classList.toggle("hide",b.dataset.t!=="mat");
+});
+render();
+</script>
+</body>
+</html>
